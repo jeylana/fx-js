@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 
 import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../components/molecules/SearchForm";
 
 import { fetchAllElephants } from "../service/elephantService";
 
@@ -38,6 +38,7 @@ export const Home = () => {
           columnGap: "20px",
           alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
         }}
       >
         <h1>Elephant Information</h1>

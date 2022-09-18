@@ -1,0 +1,7 @@
+.select-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}

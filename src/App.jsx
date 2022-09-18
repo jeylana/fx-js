@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <BrowserRouter>
+        <BrowserRouter history>
           <Header />
           <main>
             <section>
