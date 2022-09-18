@@ -9,18 +9,8 @@ import { Link } from "react-router-dom";
  *
  */
 const Card = (props) => {
-  const {
-    name,
-    affiliation,
-    species,
-    sex,
-    fictional,
-    dob,
-    dod,
-    wikilink,
-    image,
-    note,
-  } = props.data;
+  const { name, affiliation, species, sex, fictional, dob, dod, image, note } =
+    props.data;
 
   return (
     <div
@@ -43,13 +33,28 @@ const Card = (props) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-      ></div>
+      />
       <h1>{name}</h1>
-      <h2>{species}</h2>
-      <h2>
-        {dob} - {dod}
-      </h2>
-      <Link to="/elephant-info">Click here to learn more!</Link>
+      <h3>{species}</h3>
+      <h3>{sex}</h3>
+      <Link
+        to="/elephant-info"
+        state={{
+          elephantInfo: {
+            name,
+            affiliation,
+            species,
+            sex,
+            fictional,
+            dob,
+            dod,
+            image,
+            note,
+          },
+        }}
+      >
+        Learn more about {name}!
+      </Link>
     </div>
   );
 };

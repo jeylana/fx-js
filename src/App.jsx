@@ -19,7 +19,11 @@ class App extends Component {
             <section>
               <Routes>
                 <Route path={"/"} element={<Home />} />
-                <Route path={"/elephant-info"} element={<Home />} />
+                <Route
+                  path={"/elephant-info"}
+                  element={<ElephantInfo />}
+                  location={this.props.location}
+                />
               </Routes>
             </section>
           </main>

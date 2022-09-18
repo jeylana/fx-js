@@ -4,13 +4,13 @@ import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
 
-import { getAllElephants } from "../service/elephantService";
+import { fetchAllElephants } from "../service/elephantService";
 
 export const Home = () => {
   const [data, setData] = useState([]);
 
   const getElephantsAndSet = async () => {
-    setData(await getAllElephants());
+    setData(await fetchAllElephants());
   };
 
   useEffect(() => {
@@ -25,17 +25,31 @@ export const Home = () => {
     });
   }
 
-  function getFilterElephants(filteredElephants) {
+  function filterElephants(filteredElephants) {
     setData(filteredElephants);
   }
 
   return (
     <div>
-      <h1>Elephants</h1>
-      <div>
-        {/* <SearchForm
-        // getFilterElephants={getFilterElephants}
-        /> */}
+      <div
+        style={{
+          display: "grid",
+          rowGap: "10px",
+          columnGap: "20px",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <h1>Elephant Information</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            rowGap: "10px",
+          }}
+        >
+          <SearchForm filterElephants={filterElephants} />
+        </div>
       </div>
       <div
         className="App"
