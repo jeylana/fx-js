@@ -11,3 +11,11 @@ export async function fetchFilteredElephants(category, filter) {
   const data = await response.json();
   return data;
 }
+
+export async function fetchSingleElephant(index) {
+  let path = `http://localhost:8080/elephant/${index}`;
+
+  const response = await fetch(path);
+  const data = await response.json();
+  return data;
+}

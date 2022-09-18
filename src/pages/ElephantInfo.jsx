@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ElephantMoreData from "../components/ElephantMoreData";
+import { fetchSingleElephant } from "../service/elephantService";
 
 export const ElephantInfo = (props) => {
-  const location = useLocation();
   const [elephantData, setElephantData] = useState();
 
-  useEffect(() => {
-    const { elephantInfo } = location.state;
+  const { index } = useParams();
 
-    setElephantData(elephantInfo);
+  const getElephant = async () => {
+    setElephantData(await fetchSingleElephant(index));
+  };
+  useEffect(() => {
+    getElephant();
   }, []);
 
-  return (
-    <div>{!!elephantData && <ElephantMoreData data={elephantData} />}</div>
-  );
+  if (!elephantData) {
+    return null;
+  }
+
+  return <ElephantMoreData data={elephantData} />;
 };
 
 export default ElephantInfo;

@@ -9,8 +9,18 @@ import { Link } from "react-router-dom";
  *
  */
 const Card = (props) => {
-  const { name, affiliation, species, sex, fictional, dob, dod, image, note } =
-    props.data;
+  const {
+    name,
+    affiliation,
+    species,
+    sex,
+    fictional,
+    dob,
+    dod,
+    image,
+    note,
+    index,
+  } = props.data;
 
   return (
     <div
@@ -37,24 +47,7 @@ const Card = (props) => {
       <h1>{name}</h1>
       <h3>{species}</h3>
       <h3>{sex}</h3>
-      <Link
-        to="/elephant-info"
-        state={{
-          elephantInfo: {
-            name,
-            affiliation,
-            species,
-            sex,
-            fictional,
-            dob,
-            dod,
-            image,
-            note,
-          },
-        }}
-      >
-        Learn more about {name}!
-      </Link>
+      <Link to={`/elephant/${index}`}>Learn more about {name}!</Link>
     </div>
   );
 };
